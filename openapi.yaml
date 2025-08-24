@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: Headless Commerce Test API
+  version: 1.0.0
+servers:
+  - url: http://localhost:3000/api
+paths:
+  /catalog/products:
+    get:
+      summary: List products
+      parameters:
+        - in: query; name: q; schema: { type: string }
+        - in: query; name: tag; schema: { type: string }
+      responses:
+        "200": { description: Ok }
+  /cart:
+    get:
+      summary: Get cart by cookie token
+      responses: { "200": { description: Ok } }
+  /cart/items:
+    post:
+      summary: Add item
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { variantId: { type: string }, quantity: { type: integer, minimum: 1 } }, required: [variantId, quantity] } } } }
+      responses: { "201": { description: Created } }
+  /cart/apply-promo:
+    post:
+      summary: Apply promo
+      requestBody: { required: true, content: { application/json: { schema: { type: object, properties: { code: { type: string } }, required: [code] } } } }
+      responses: { "200": { description: Ok } }
+  /checkout/preview:
+    get: { summary: Price cart; responses: { "200": { description: Ok } } }
+  /checkout/place:
+    post:
+      summary: Create order from cart
+      responses: { "201": { description: Created } }
