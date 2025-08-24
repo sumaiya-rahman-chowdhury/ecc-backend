@@ -6,37 +6,37 @@ A simple **headless e-commerce backend** built with Node.js, Express, TypeScript
 
 ## **Table of Contents**
 
-* [Tech Stack](#tech-stack)
-* [Features](#features)
-* [Installation](#installation)
-* [Environment Variables](#environment-variables)
-* [Running the Project](#running-the-project)
-* [API Routes](#api-routes)
-* [Seeding Database](#seeding-database)
-* [Testing](#testing)
-* [Error Handling](#error-handling)
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Installation](#installation)
+- [Environment Variables](#environment-variables)
+- [Running the Project](#running-the-project)
+- [API Routes](#api-routes)
+- [Seeding Database](#seeding-database)
+- [Testing](#testing)
+- [Error Handling](#error-handling)
 
 ---
 
 ## **Tech Stack**
 
-* Node.js + Express (TypeScript)
-* MongoDB + Mongoose
-* Zod (for validation)
-* UUID (for guest cart tokens)
-* Helmet, CORS, Morgan for middleware & logging
-* Jest + Supertest for testing
+- Node.js + Express (TypeScript)
+- MongoDB + Mongoose
+- Zod (for validation)
+- UUID (for guest cart tokens)
+- Helmet, CORS, Morgan for middleware & logging
+- Jest + Supertest for testing
 
 ---
 
 ## **Features**
 
-* **Catalog**: Products with variants and prices
-* **Cart**: Guest-first cart management
-* **Promos**: Percent or fixed discounts with validity window
-* **Checkout**: Create order from cart
-* **Orders**: View and manage orders
-* **Input validation** and standardized error responses
+- **Catalog**: Products with variants and prices
+- **Cart**: Guest-first cart management
+- **Promos**: Percent or fixed discounts with validity window
+- **Checkout**: Create order from cart
+- **Orders**: View and manage orders
+- **Input validation** and standardized error responses
 
 ---
 
@@ -78,13 +78,13 @@ Replace `<username>` and `<password>` with your MongoDB credentials.
 
 ## **Running the Project**
 
-* **Development mode** (auto-reload):
+- **Development mode** (auto-reload):
 
 ```bash
 npm run dev
 ```
 
-* **Production build**:
+- **Production build**:
 
 ```bash
 npm run build
@@ -99,7 +99,8 @@ Server runs on `http://localhost:<PORT>`.
 
 | Route                     | Method | Description                    |
 | ------------------------- | ------ | ------------------------------ |
-| `/api/catalog/products`            | GET    | List all products              |
+| `/api/catalog/products`   | GET    | List all products              |
+| `/api/catalog/products`   | POST   | POST PRODUCT                   |
 | `/api/catalog/:id`        | GET    | Get single product             |
 | `/api/cart`               | GET    | Get current cart (guest-first) |
 | `/api/cart/items`         | POST   | Add item to cart               |
@@ -120,19 +121,19 @@ Seed sample products and promos:
 npm run seed
 ```
 
-* Seeds T-Shirt products and promo codes like `WELCOME10` and `FLAT500`.
+- Seeds T-Shirt products and promo codes like `WELCOME10` and `FLAT500`.
 
 ---
 
 ## **Testing**
 
-* Unit & integration tests using Jest + Supertest:
+- Unit & integration tests using Jest + Supertest:
 
 ```bash
 npm run test
 ```
 
-* Postman can be used to test all routes manually. Make sure cookies are enabled for guest cart tracking.
+- Postman can be used to test all routes manually. Make sure cookies are enabled for guest cart tracking.
 
 ---
 
@@ -149,12 +150,11 @@ All API errors return a consistent JSON structure:
 }
 ```
 
-* `code`: error type
-* `message`: detailed description
+- `code`: error type
+- `message`: detailed description
 
 ---
 
 ## **License**
 
 MIT License
-
