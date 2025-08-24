@@ -3,14 +3,19 @@ import { Request, Response, NextFunction } from "express";
 import { HttpError } from "./errors";
 
 export const validate =
-  (schema: ZodObject) => (req: Request, _res: Response, next: NextFunction) => {
+  (schema: ZodObject<any>) =>
+  (req: Request, _res: Response, next: NextFunction) => {
     try {
-      const parsed = schema.parse({
-        body: req.body,
-        params: req.params,
-        query: req.query,
-      });
-      Object.assign(req, parsed);
+      // parse body only
+      if (schema.shape.body) {
+        req.body = schema.shape.body.parse(req.body);
+      }
+      if (schema.shape.params) {
+        req.params = schema.shape.params.parse(req.params);
+      }
+      if (schema.shape.query) {
+        req.query = schema.shape.query.parse(req.query);
+      }
       next();
     } catch (e) {
       const ze = e as ZodError;
